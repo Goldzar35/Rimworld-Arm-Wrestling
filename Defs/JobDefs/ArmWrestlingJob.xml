@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>ArmWrestle</defName>
+    <label>arm wrestling</label>
+    <description>Arm wrestle at the table for fun and strength training.</description>
+    <driverClass>RimworldArmWrestling.JobDriver_ArmWrestle</driverClass>
+    <reportString>arm wrestling.</reportString>
+    <joyKind>Social</joyKind>
+    <joyGainRate>0.36</joyGainRate>
+  </JobDef>
+</Defs>

@@ -1,0 +1,15 @@
+# Build output
+Source/obj/
+Assemblies/*.dll
+!Assemblies/.gitkeep
+
+# VS/Rider
+.vs/
+*.user
+*.suo
+
+# macOS
+.DS_Store
+
+# Claude
+.claude/

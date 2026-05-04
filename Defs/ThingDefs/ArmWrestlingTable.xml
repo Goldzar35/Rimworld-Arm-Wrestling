@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>ArmWrestlingTable</defName>
+    <label>arm wrestling table</label>
+    <description>A sturdy table used for arm wrestling. Pawns can challenge each other here for fun and to build strength.</description>
+    <graphicData>
+      <texPath>Things/Buildings/Rimworld_Arm-Wrestling_Table_V2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>100</WorkToBuild>
+      <Mass>10</Mass>
+      <Flammability>1.0</Flammability>
+      <JoyGainFactor>1</JoyGainFactor>
+    </statBases>
+    <costList>
+      <WoodLog>50</WoodLog>
+      <Steel>20</Steel>
+    </costList>
+    <building>
+      <isEdifice>false</isEdifice>
+      <joyKind>Social</joyKind>
+    </building>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <designationCategory>Joy</designationCategory>
+  </ThingDef>
+</Defs>

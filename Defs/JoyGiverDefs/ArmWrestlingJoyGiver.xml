@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JoyGiverDef>
+    <defName>ArmWrestle</defName>
+    <giverClass>RimworldArmWrestling.JoyGiver_ArmWrestle</giverClass>
+    <baseChance>2</baseChance>
+    <jobDef>ArmWrestle</jobDef>
+    <joyKind>Social</joyKind>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </JoyGiverDef>
+</Defs>
