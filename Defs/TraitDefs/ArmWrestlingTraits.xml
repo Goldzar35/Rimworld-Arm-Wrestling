@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <TraitDef>
+    <defName>ArmWrestling_OverTheTop</defName>
+    <commonality>0.02</commonality>
+    <degreeDatas>
+      <li>
+        <label>over the top</label>
+        <description>This colonist has a burning passion for arm wrestling. They gain recreation much faster at the arm wrestling table.</description>
+        <degree>0</degree>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+</Defs>
