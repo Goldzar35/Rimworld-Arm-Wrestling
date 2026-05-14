@@ -5,8 +5,8 @@
     <label>arm wrestling table</label>
     <description>A sturdy table used for arm wrestling. Pawns can challenge each other here for fun and to build strength.</description>
     <graphicData>
-      <texPath>Things/Buildings/Rimworld_Arm-Wrestling_Table_V2</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Buildings/ArmWrestlingTable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <minifiedDef>MinifiedThing</minifiedDef>
@@ -21,15 +21,15 @@
       <JoyGainFactor>1</JoyGainFactor>
     </statBases>
     <costList>
-      <WoodLog>50</WoodLog>
-      <Steel>20</Steel>
+      <Steel>80</Steel>
+      <Cloth>30</Cloth>
     </costList>
     <building>
       <isEdifice>false</isEdifice>
       <joyKind>Social</joyKind>
     </building>
     <size>(1,1)</size>
-    <rotatable>false</rotatable>
+    <rotatable>true</rotatable>
     <passability>PassThroughOnly</passability>
     <designationCategory>Joy</designationCategory>
   </ThingDef>

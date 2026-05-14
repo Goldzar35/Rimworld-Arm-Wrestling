@@ -8,12 +8,11 @@ namespace RimworldArmWrestling
     {
         public override Job TryGiveJob(Pawn pawn)
         {
-            // Find the closest reachable arm wrestling table
             Thing table = GenClosest.ClosestThingReachable(
                 pawn.Position,
                 pawn.Map,
                 ThingRequest.ForDef(ThingDef.Named("ArmWrestlingTable")),
-                PathEndMode.InteractionCell,
+                PathEndMode.Touch,
                 TraverseParms.For(pawn),
                 validator: t => !t.IsForbidden(pawn)
             );
@@ -22,11 +21,10 @@ namespace RimworldArmWrestling
                 return null;
 
             Building building = (Building)table;
-            // Pads are on the east and west sides of the table
-            IntVec3 initiatorCell = table.Position + new IntVec3(1, 0, 0);  // East pad
-            IntVec3 partnerCell   = table.Position + new IntVec3(-1, 0, 0); // West pad
+            GetSeatCells(building, out IntVec3 initiatorCell, out IntVec3 partnerCell);
 
-            // Make sure both cells are standable and reservable
+            if (!initiatorCell.Standable(pawn.Map))
+                return null;
             if (!partnerCell.Standable(pawn.Map))
                 return null;
             if (!pawn.CanReserve(initiatorCell))
@@ -34,22 +32,34 @@ namespace RimworldArmWrestling
             if (!pawn.CanReserve(partnerCell))
                 return null;
 
-            // Find a free partner pawn
             Pawn partner = FindPartner(pawn, partnerCell);
             if (partner == null)
                 return null;
 
-            // Give partner their job (opposite side of the table)
             Job partnerJob = JobMaker.MakeJob(def.jobDef, table);
             partnerJob.targetC = partnerCell;
-            bool partnerTookJob = partner.jobs.TryTakeOrderedJob(partnerJob, JobTag.SatisfyingNeeds);
-            if (!partnerTookJob)
+            if (!partner.jobs.TryTakeOrderedJob(partnerJob, JobTag.SatisfyingNeeds))
                 return null;
 
-            // Return initiator job (interaction cell side)
             Job initiatorJob = JobMaker.MakeJob(def.jobDef, table);
             initiatorJob.targetC = initiatorCell;
             return initiatorJob;
+        }
+
+        private static void GetSeatCells(Building table, out IntVec3 cellA, out IntVec3 cellB)
+        {
+            // North/South textures have the arm axis running east-west
+            // East/West textures have the arm axis running north-south
+            if (table.Rotation == Rot4.North || table.Rotation == Rot4.South)
+            {
+                cellA = table.Position + IntVec3.East;
+                cellB = table.Position + IntVec3.West;
+            }
+            else
+            {
+                cellA = table.Position + IntVec3.North;
+                cellB = table.Position + IntVec3.South;
+            }
         }
 
         private Pawn FindPartner(Pawn initiator, IntVec3 partnerCell)
